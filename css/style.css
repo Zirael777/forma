@@ -78,3 +78,14 @@ h2 { font-size:46px; line-height:1.03; font-weight:600; color:var(--ink); }
 @media(max-width:1180px){.services-line{grid-template-columns:160px minmax(0,1fr);gap:14px}.services-mini{gap:10px}.services-mini .service-item{gap:6px;font-size:10px}.service-icon{width:24px;height:24px;flex-basis:24px}}
 @media(max-width:850px){.services-line{display:flex;flex-direction:column;align-items:flex-start;gap:16px}.services h2{border:0;padding:0}.services-mini{width:100%;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.footer-grid{grid-template-columns:175px 1fr;row-gap:18px}.footer-links{grid-column:2}}
 @media(max-width:600px){.services h2{font-size:29px}.services-mini{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.services-mini .service-item{font-size:11px}.works-intro>p:not(.eyebrow){max-width:470px}.gallery-controls{margin-top:15px}.wardrobe-card::after{bottom:43px}.footer-grid{grid-template-columns:1fr;gap:21px}.footer-links{grid-column:auto;flex-direction:row;flex-wrap:wrap;gap:14px}.footer-credit{flex-direction:column;align-items:flex-start}}
+
+/* FORMA v4: контакты — отдельный раздел; элементы связи намеренно без ссылок */
+.contacts-section{background:#f3ebdd;border-top:1px solid #e2d8c9;border-bottom:1px solid #e2d8c9;padding-block:65px;scroll-margin-top:70px}
+.contacts-layout{display:flex;align-items:center;justify-content:flex-start}
+.contacts-content{width:100%;max-width:770px}
+.contacts-section h2{color:#37392e;font:600 46px/1.1 var(--serif);margin:9px 0 15px}
+.contacts-description{max-width:615px;color:#57594f;font-size:15px;line-height:1.8;margin:0 0 24px}
+.contacts-socials{display:flex;flex-wrap:wrap;gap:12px}
+.contacts-chip{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-width:148px;padding:12px 19px;border:1px solid #aaa995;border-radius:30px;color:#586b51;background:#faf6ed;font-size:13px;font-weight:600;cursor:default;user-select:none}
+.contacts-chip svg{width:19px;height:19px;flex:0 0 19px}
+@media(max-width:600px){.contacts-section{padding-block:48px}.contacts-section h2{font-size:42px}.contacts-description{font-size:13px}.contacts-socials{gap:10px}.contacts-chip{min-width:0;flex:1 1 130px;padding:11px 13px;font-size:12px}}
