@@ -1,0 +1,7 @@
+# Never commit private credentials or any local secrets
+.env
+.env.*
+!.env.example
+**/node_modules/
+.DS_Store
+Thumbs.db
