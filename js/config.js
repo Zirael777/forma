@@ -2,6 +2,6 @@
 window.FORMA_CONFIG = {
   supabaseUrl: 'https://aqdusphslpprrykxreqm.supabase.co',
   supabasePublishableKey: 'sb_publishable_SZ_plJ4pmXCX1jiE5QdBhg_-LsrOG7y',
-  functionName: 'submit-order',
+  functionName: 'quick-processor',
   turnstileSiteKey: '0x4AAAAAAGQuugGrTrs2SbD6'
 };
