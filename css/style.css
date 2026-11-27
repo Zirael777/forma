@@ -89,3 +89,77 @@ h2 { font-size:46px; line-height:1.03; font-weight:600; color:var(--ink); }
 .contacts-chip{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-width:148px;padding:12px 19px;border:1px solid #aaa995;border-radius:30px;color:#586b51;background:#faf6ed;font-size:13px;font-weight:600;cursor:default;user-select:none}
 .contacts-chip svg{width:19px;height:19px;flex:0 0 19px}
 @media(max-width:600px){.contacts-section{padding-block:48px}.contacts-section h2{font-size:42px}.contacts-description{font-size:13px}.contacts-socials{gap:10px}.contacts-chip{min-width:0;flex:1 1 130px;padding:11px 13px;font-size:12px}}
+
+/* FORMA — адаптация галереи для мобильных */
+
+@media (max-width: 850px) {
+    .works-grid {
+        grid-template-columns: minmax(0, 1fr);
+        align-items: start;
+        gap: 24px;
+    }
+
+    .works-intro {
+        max-width: 100%;
+    }
+
+    .works-intro > p:not(.eyebrow) {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .works.section {
+        padding-block: 36px;
+    }
+
+    .works-grid {
+        gap: 18px;
+    }
+
+    .works-intro h2 {
+        font-size: 42px;
+    }
+
+    .works-intro > p:not(.eyebrow) {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .works-cards {
+        grid-template-columns: minmax(0, 1fr);
+        min-width: 0;
+        width: 100%;
+        gap: 0;
+    }
+
+    .works-cards .work-card:not(:first-child) {
+        display: none;
+    }
+
+    .work-card img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: auto;
+        object-fit: contain;
+    }
+
+    .work-card figcaption {
+        padding: 12px 14px;
+        font-size: 13px;
+    }
+
+    .work-card figcaption span {
+        font-size: 11px;
+    }
+
+    .gallery-controls {
+        margin-top: 16px;
+        justify-content: center;
+    }
+
+    .gallery-arrow {
+        width: 44px;
+        height: 44px;
+    }
+}
