@@ -2,9 +2,71 @@
 const toggle=document.querySelector('#menu-toggle'), menu=document.querySelector('#nav-links');
 toggle?.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',String(open));menu.classList.toggle('is-open',open);});
 menu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('is-open');toggle?.setAttribute('aria-expanded','false');}));
-const gallery=document.querySelector('.works-cards');
-document.querySelector('#works-next')?.addEventListener('click',()=>{if(gallery?.firstElementChild)gallery.append(gallery.firstElementChild);});
-document.querySelector('#works-prev')?.addEventListener('click',()=>{if(gallery?.lastElementChild)gallery.prepend(gallery.lastElementChild);});
+const gallery = document.querySelector('.works-cards');
+
+function nextWork() {
+    if (gallery?.firstElementChild) {
+        gallery.append(gallery.firstElementChild);
+    }
+}
+
+function prevWork() {
+    if (gallery?.lastElementChild) {
+        gallery.prepend(gallery.lastElementChild);
+    }
+}
+
+document.querySelector('#works-next')
+    ?.addEventListener('click', nextWork);
+
+document.querySelector('#works-prev')
+    ?.addEventListener('click', prevWork);
+
+// Перелистывание свайпом на мобильных
+let touchStartX = 0;
+let touchStartY = 0;
+
+gallery?.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].clientX;
+    touchStartY = e.changedTouches[0].clientY;
+}, { passive: true });
+
+gallery?.addEventListener('touchend', (e) => {
+    if (!window.matchMedia('(max-width: 600px)').matches) {
+        return;
+    }
+
+    const diffX = e.changedTouches[0].clientX - touchStartX;
+    const diffY = e.changedTouches[0].clientY - touchStartY;
+
+    if (Math.abs(diffX) > 50 &&
+        Math.abs(diffX) > Math.abs(diffY)) {
+        if (diffX < 0) {
+            nextWork();
+        } else {
+            prevWork();
+        }
+    }
+}, { passive: true });
+
+// Перенос стрелок под галерею на мобильных
+const galleryControls = document.querySelector('.gallery-controls');
+const worksGrid = document.querySelector('.works-grid');
+const worksIntro = document.querySelector('.works-intro');
+const mobileGallery = window.matchMedia('(max-width: 600px)');
+
+function updateGalleryControls() {
+    if (!galleryControls) return;
+
+    if (mobileGallery.matches) {
+        worksGrid?.append(galleryControls);
+    } else {
+        worksIntro?.append(galleryControls);
+    }
+}
+
+mobileGallery.addEventListener('change', updateGalleryControls);
+updateGalleryControls();
 const cfg=window.FORMA_CONFIG||{},live=/^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(cfg.supabaseUrl||'') && !!cfg.supabasePublishableKey && !!cfg.turnstileSiteKey;
 const alert=document.querySelector('#demo-alert'),form=document.querySelector('#order-form'),msg=document.querySelector('#form-message'),input=document.querySelector('#photos'),filesInfo=document.querySelector('#file-count'),btn=document.querySelector('#submit-order');
 if(live){alert.hidden=true;startTurnstile();}else{alert.hidden=false;}
